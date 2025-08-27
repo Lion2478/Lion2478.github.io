@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tu-dominio.com/sitemap.xml
+
+# Política para bots de redes sociales
+User-agent: facebookexternalhit/*
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Bloquear crawling de archivos específicos
+Disallow: /src/
+Disallow: /*.json$
+Disallow: /*.config.*
+
+# Permitir archivos de assets
+Allow: /assets/
+Allow: /images/

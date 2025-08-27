@@ -1,0 +1,317 @@
+---
+// Experience section component with timeline
+---
+
+<section id="experience" class="section experience-section">
+  <div class="container">
+    <h2 class="section-title">Mi Educacion Academica</h2>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <div class="marker-dot"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-card glass-effect">
+            <div class="timeline-header">
+              <h3 class="timeline-title">Tecnico en Programacion</h3>
+              <span class="timeline-company">Cetis 78</span>
+              <span class="timeline-date">2020 - 2023 </span>
+            </div>
+            <p class="timeline-description">
+              Durante mi formación como Técnico en Programación adquirí las bases necesarias para desenvolverme 
+              en el desarrollo de proyectos tecnológicos. Este proceso me permitió fortalecer mis habilidades 
+              de análisis, resolver problemas de manera creativa y trabajar en equipo para alcanzar objetivos comunes.
+            </p>
+            <div class="timeline-skills">
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">mysql</span>
+              <span class="skill-tag">python</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <div class="marker-dot"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-card glass-effect">
+            <div class="timeline-header">
+              <h3 class="timeline-title">Ingeniero en sistemas computacionales</h3>
+              <span class="timeline-company">Universsidad Autonoma de Tamaulipas (UAT)</span>
+              <span class="timeline-date">2023 - Actualidad</span>
+            </div>
+            <p class="timeline-description">
+            Diseño y desarrollo de aplicaciones y sistemas.
+            Manejo de bases de datos y estructuras de información.
+            Aplicación de principios de programación y algoritmos.
+            Resolución de problemas mediante el uso de la tecnología.
+            Trabajo en equipo para el desarrollo de proyectos.
+            </p>
+            <div class="timeline-skills">
+              <span class="skill-tag">lynx</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">sql-mysql</span>
+              <span class="skill-tag">laravel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience-section {
+    background: linear-gradient(
+      135deg,
+      rgba(26, 26, 46, 0.8) 0%,
+      rgba(15, 15, 35, 0.9) 100%
+    );
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gradient-bg);
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-content {
+    margin-left: 0;
+    margin-right: calc(50% + 30px);
+    text-align: right;
+  }
+
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: calc(50% + 30px);
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  .marker-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--gradient-bg);
+    border-radius: 50%;
+    border: 4px solid var(--dark-bg);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+    animation: markerPulse 2s infinite;
+  }
+
+  @keyframes markerPulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.8);
+    }
+  }
+
+  .timeline-content {
+    position: relative;
+  }
+
+  .timeline-card {
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .timeline-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(139, 92, 246, 0.05),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .timeline-card:hover::before {
+    left: 100%;
+  }
+
+  .timeline-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-purple);
+    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
+  }
+
+  .timeline-header {
+    margin-bottom: 1rem;
+  }
+
+  .timeline-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-company {
+    font-size: 1.1rem;
+    color: var(--primary-purple);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-date {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    background: var(--glass-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    display: inline-block;
+  }
+
+  .timeline-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-achievements {
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-achievements ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .timeline-achievements li {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .timeline-achievements li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-pink);
+    font-weight: bold;
+  }
+
+  .timeline-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    background: var(--glass-bg);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+  }
+
+  .skill-tag:hover {
+    background: var(--primary-purple);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .timeline::before {
+      left: 20px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: 50px;
+      margin-right: 0;
+      text-align: left;
+    }
+
+    .timeline-marker {
+      left: 20px;
+      transform: none;
+    }
+
+    .timeline-card {
+      padding: 1.5rem;
+    }
+
+    .timeline-title {
+      font-size: 1.2rem;
+    }
+
+    .timeline-company {
+      font-size: 1rem;
+    }
+
+    .timeline-skills {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .timeline-card {
+      padding: 1.25rem;
+    }
+
+    .timeline-title {
+      font-size: 1.1rem;
+    }
+
+    .timeline-description {
+      font-size: 0.95rem;
+    }
+
+    .timeline-achievements li {
+      font-size: 0.9rem;
+    }
+
+    .skill-tag {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem;
+    }
+  }
+</style>

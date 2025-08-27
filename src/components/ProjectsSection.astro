@@ -1,0 +1,383 @@
+---
+// Projects section component
+---
+
+<section id="projects" class="section projects-section">
+  <div class="container">
+    <h2 class="section-title">Proyectos Destacados</h2>
+    
+    <div class="projects-filter">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card glass-effect" data-category="photography">
+        <div class="project-image">
+          <img 
+            src="/logo-clinica-miel.jpg" 
+            alt="Logo Clínica Miel" 
+            loading="lazy"
+          />
+          <div class="project-overlay">
+            <div class="project-actions">
+              <button class="action-btn" aria-label="Ver proyecto">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+              <button class="action-btn" aria-label="Enlace externo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15,3 21,3 21,9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Escaneo de qr en lynx</h3>
+          <p class="project-description">
+            generacion de coodigo qr el cual contiene un ticket de compra el cual 
+            al escanearlo desde otro dispositivo se dirigira al ticket que esta subido
+            a un dominio
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">lynx</span>
+            <span class="project-tag">dominio: render</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card glass-effect" data-category="branding">
+        <div class="project-image">
+          <img 
+            src="/project-placeholder-2.jpg" 
+            alt="Proyecto de branding para restaurante" 
+            loading="lazy"
+          />
+          <div class="project-overlay">
+            <div class="project-actions">
+              <button class="action-btn" aria-label="Ver proyecto">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+              <button class="action-btn" aria-label="Enlace externo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15,3 21,3 21,9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Pagina Web: clinica miel</h3>
+          <p class="project-description">
+            pagina web para una clinica la cual para los pacientes puedan agendar una cita y 
+            para los doctores poder administrar, aceptar y controlar las citas desde su perfil
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Laravel</span>
+            <span class="project-tag">Blade</span>
+            <span class="project-tag">sql</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn') as NodeListOf<HTMLButtonElement>;
+    const projectCards = document.querySelectorAll('.project-card') as NodeListOf<HTMLElement>;
+
+    filterButtons.forEach((button: HTMLButtonElement) => {
+      button.addEventListener('click', (e: MouseEvent) => {
+        const currentButton = e.currentTarget as HTMLButtonElement;
+        const filter = currentButton.getAttribute('data-filter');
+        
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        currentButton.classList.add('active');
+        
+        // Filter projects
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.5s ease forwards';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Lazy loading for project images
+    const images = document.querySelectorAll('.project-image img');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target as HTMLImageElement;
+          // Add a placeholder background while loading
+          img.style.background = 'linear-gradient(45deg, #1A1A2E 25%, #16213E 25%, #16213E 50%, #1A1A2E 50%, #1A1A2E 75%, #16213E 75%)';
+          img.style.backgroundSize = '20px 20px';
+          observer.unobserve(img);
+        }
+      });
+    });
+
+    images.forEach(img => imageObserver.observe(img));
+  });
+</script>
+
+<style>
+  .projects-section {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(236, 72, 153, 0.05) 50%,
+      transparent 100%
+    );
+  }
+
+  .projects-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: var(--glass-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--glass-border);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: var(--gradient-bg);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-purple);
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+  }
+
+  .project-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    /* Placeholder styling */
+    background: linear-gradient(45deg, #1A1A2E 25%, #16213E 25%, #16213E 50%, #1A1A2E 50%, #1A1A2E 75%, #16213E 75%);
+    background-size: 20px 20px;
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.1);
+  }
+
+  .project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+
+  .project-actions {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .action-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .action-btn:hover {
+    background: var(--primary-purple);
+    transform: scale(1.1);
+  }
+
+  .project-content {
+    padding: 1.5rem;
+  }
+
+  .project-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .project-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .project-tag {
+    background: var(--glass-bg);
+    color: var(--text-muted);
+    padding: 0.3rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+  }
+
+  .project-tag:hover {
+    background: var(--primary-pink);
+    color: white;
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .project-card {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .project-card:nth-child(1) { animation-delay: 0.1s; }
+  .project-card:nth-child(2) { animation-delay: 0.2s; }
+  .project-card:nth-child(3) { animation-delay: 0.3s; }
+  .project-card:nth-child(4) { animation-delay: 0.4s; }
+  .project-card:nth-child(5) { animation-delay: 0.5s; }
+  .project-card:nth-child(6) { animation-delay: 0.6s; }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .projects-filter {
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .project-image {
+      height: 200px;
+    }
+
+    .project-content {
+      padding: 1.25rem;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+    }
+
+    .project-description {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .projects-filter {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .filter-btn {
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .project-image {
+      height: 180px;
+    }
+
+    .project-content {
+      padding: 1rem;
+    }
+
+    .action-btn {
+      width: 45px;
+      height: 45px;
+    }
+  }
+</style>

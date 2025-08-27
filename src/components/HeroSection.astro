@@ -1,0 +1,437 @@
+---
+// Hero section - Pure Astro component
+---
+
+<section id="hero" class="hero-section">
+  <div class="hero-background">
+    <div class="gradient-circle gradient-circle-1"></div>
+    <div class="gradient-circle gradient-circle-2"></div>
+    <div class="gradient-circle gradient-circle-3"></div>
+  </div>
+  
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-greeting">
+          <span class="greeting-text">¡Hola! 👋</span>
+        </div>
+        <h1 class="hero-title">
+        <span class="name-highlight">Soy</span>
+        <span class="name-highlight">Leonardo</span>
+        </h1>
+        <h2 class="hero-subtitle" style="color: #8B5CF6 !important">
+          Programador developer para web
+        </h2>
+        <p class="hero-description">
+          Apasionado por la creación de experiencias digitales únicas y funcionales.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">
+            Trabajemos Juntos
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </a>
+          <a href="#projects" class="btn btn-secondary">
+            Ver Proyectos
+          </a>
+        </div>
+      </div>
+      
+      
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 0;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .gradient-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    filter: blur(80px);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .gradient-circle-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--primary-purple);
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .gradient-circle-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--primary-pink);
+    top: 60%;
+    right: 10%;
+    animation-delay: 2s;
+  }
+
+  .gradient-circle-3 {
+    width: 200px;
+    height: 200px;
+    background: var(--accent-color);
+    bottom: 20%;
+    left: 30%;
+    animation-delay: 4s;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) scale(1);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.05);
+    }
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-greeting {
+    margin-bottom: 1rem;
+  }
+
+  .greeting-text {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .name-highlight {
+    background: var(--gradient-bg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.875rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid transparent;
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    background: var(--gradient-bg);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-secondary:hover {
+    background: var(--glass-bg);
+    border-color: var(--primary-purple);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--gradient-bg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Hero Image */
+  .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .image-wrapper {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+  }
+
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2rem;
+    border: 4px solid var(--glass-border);
+    background: var(--dark-secondary);
+    /* Placeholder styling until image is added */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='%23666'%3E%3Ccircle cx='150' cy='120' r='40'/%3E%3Cpath d='M150 180c-30 0-70 15-70 45v25h140v-25c0-30-40-45-70-45z'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+  }
+
+  .image-decoration {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .decoration-circle {
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-bg);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    animation: pulse 2s infinite;
+  }
+
+  .decoration-dots {
+    position: absolute;
+    top: 10px;
+    left: -30px;
+    width: 20px;
+    height: 20px;
+    background-image: 
+      radial-gradient(circle, var(--primary-purple) 2px, transparent 2px);
+    background-size: 10px 10px;
+    opacity: 0.6;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .floating-card {
+    position: absolute;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 140px;
+    animation: floatCard 4s ease-in-out infinite;
+  }
+
+  .card-1 {
+    top: -20px;
+    left: -40px;
+    animation-delay: 0s;
+  }
+
+  .card-2 {
+    bottom: -20px;
+    right: -40px;
+    animation-delay: 2s;
+  }
+
+  @keyframes floatCard {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .card-icon {
+    font-size: 1.5rem;
+  }
+
+  .card-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+  }
+
+  .card-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 968px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-stats {
+      justify-content: center;
+    }
+
+    .image-wrapper {
+      width: 250px;
+      height: 250px;
+    }
+
+    .floating-card {
+      min-width: 120px;
+      padding: 0.75rem;
+    }
+
+    .card-1 {
+      top: -15px;
+      left: -30px;
+    }
+
+    .card-2 {
+      bottom: -15px;
+      right: -30px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 280px;
+      justify-content: center;
+    }
+
+    .hero-stats {
+      gap: 1.5rem;
+    }
+
+    .image-wrapper {
+      width: 200px;
+      height: 200px;
+    }
+
+    .floating-card {
+      display: none; /* Hide floating cards on very small screens */
+    }
+  }
+</style>

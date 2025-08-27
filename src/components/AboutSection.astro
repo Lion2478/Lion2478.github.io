@@ -1,0 +1,330 @@
+---
+// About section component
+---
+
+<section id="about" class="section about-section">
+  <div class="container">
+    <h2 class="section-title">Sobre Mí</h2>
+    
+    <div class="about-content">
+      <div class="about-text">
+        <div class="about-intro glass-effect">
+          <h3 class="about-subtitle">Pasión por  crear sitios web para ayudar a la comunidad</h3>
+          <p class="about-description">
+            Mi nombre es <strong>Jose Leonardo Hernandez</strong>,soy un desarrollador entusiasta y autodidacta con 
+            una insaciable curiosidad por aprender y dominar nuevas tecnologías. Disfruto resolviendo 
+            problemas complejos y transformando ideas en código funcional. Estoy buscando una oportunidad para 
+            aportar mi energía, mi capacidad de aprendizaje rápido y mi compromiso a un equipo innovador.
+          </p>
+        </div>
+
+        <div class="about-details">
+          <div class="detail-group">
+            <h4 class="detail-title">Especialidades</h4>
+            <ul class="detail-list">
+              <li> → Desarrollo de páginas web responsivas</li>
+              <li> → Creación de interfaces con HTML, CSS y JavaScript</li>
+              <li> → Manejo de frameworks modernos (React, Lynx)</li>
+              <li> → Integración con APIs y servicios externos</li>
+              <li> → Optimización de rendimiento y accesibilidad web</li>
+            </ul>
+          </div>
+
+          <div class="detail-group">
+            <h4 class="detail-title">Enfoque de Trabajo</h4>
+            <ul class="detail-list">
+              <li>✨Aprendizaje y mejora constante en nuevas tecnologías</li>
+              <li>🎯 Desarrollo orientado a buenas prácticas y resultados funcionales</li>
+              <li>🤝 Comunicación y colaboración con equipos y clientes</li>
+              <li>🛠️ Solución de problemas de manera práctica y creativa</li>
+              <li>📊 Código limpio y mantenible para futuros proyectos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual">
+        <div class="visual-grid">
+          <div class="visual-item item-1">
+            <div class="visual-content">
+              <div class="visual-icon">🎨</div>
+              <h4>Creatividad</h4>
+              <p> interfaces de usuario intuitivas y atractivas para una experiencia memorable.</p>
+            </div>
+          </div>
+          
+          <div class="visual-item item-2">
+            <div class="visual-content">
+              <div class="visual-icon">📊</div>
+              <h4>Estrategia</h4>
+              <p>Analizacion de las necesidades del proyecto para un desarrollo estructurado y eficaz.</p>
+            </div>
+          </div>
+          
+          <div class="visual-item item-3">
+            <div class="visual-content">
+              <div class="visual-icon">⚡</div>
+              <h4>Eficiencia</h4>
+              <p>Codificacion con metodologías ágiles para una entrega rápida y de alta calidad.</p>
+            </div>
+          </div>
+          
+          <div class="visual-item item-4">
+            <div class="visual-content">
+              <div class="visual-icon">🎯</div>
+              <h4>Resultados</h4>
+              <p>enfocacion en la funcionalidad y escalabilidad para un rendimiento excepcional.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-quote glass-effect">
+          <blockquote>
+            "El mejor mensaje de error es el que nunca aparece."
+          </blockquote>
+          <cite>— Barbara Liskov</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    background: linear-gradient(
+      180deg, 
+      transparent 0%, 
+      rgba(139, 92, 246, 0.05) 50%, 
+      transparent 100%
+    );
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-intro {
+    padding: 2rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    background: var(--gradient-bg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .about-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .about-description:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .detail-group {
+    background: var(--glass-bg);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--glass-border);
+  }
+
+  .detail-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .detail-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .detail-list li {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .detail-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-purple);
+    font-weight: bold;
+  }
+
+  /* Visual Grid */
+  .about-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .visual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .visual-item {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .visual-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(139, 92, 246, 0.1),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .visual-item:hover::before {
+    left: 100%;
+  }
+
+  .visual-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-purple);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+  }
+
+  .visual-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .visual-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .visual-item h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .visual-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .about-quote {
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .about-quote blockquote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  .about-quote blockquote::before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--primary-purple);
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    opacity: 0.3;
+    font-family: serif;
+  }
+
+  .about-quote cite {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: normal;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 968px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .visual-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .visual-item {
+      padding: 1.25rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .about-intro {
+      padding: 1.5rem;
+    }
+
+    .about-subtitle {
+      font-size: 1.25rem;
+    }
+
+    .about-description {
+      font-size: 1rem;
+    }
+
+    .detail-group {
+      padding: 1.25rem;
+    }
+
+    .about-quote {
+      padding: 1.5rem;
+    }
+
+    .about-quote blockquote {
+      font-size: 1.1rem;
+    }
+  }
+</style>
