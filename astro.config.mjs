@@ -3,7 +3,9 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://leonardohdz.me',
+  site: 'https://lion2478.github.io',
+  base: '/',
+  outDir: './dist',
   integrations: [],
   vite: {
     css: {
