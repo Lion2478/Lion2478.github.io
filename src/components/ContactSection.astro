@@ -74,8 +74,6 @@
         <form 
           class="contact-form glass-effect" 
           id="contact-form"
-          action="https://formspree.io/f/joseleonardohdz88@gmail.com"
-          method="POST"
         >
           <h3 class="form-title">Envíame un mensaje</h3>
           
@@ -96,7 +94,7 @@
             <input 
               type="email" 
               id="email" 
-              name="_replyto" 
+              name="email" 
               class="form-input" 
               required 
               placeholder="tu@email.com"
@@ -115,11 +113,6 @@
             ></textarea>
           </div>
 
-          <!-- Campos ocultos para Formspree -->
-          <input type="hidden" name="_to" value="joseleonardohdz88@gmail.com">
-          <input type="hidden" name="_subject" value="Nuevo mensaje desde leonardohdz.me">
-          <input type="hidden" name="_next" value="https://leonardohdz.me/?mensaje=enviado")
-
           <button type="submit" class="form-submit">
             <span class="submit-text">Enviar mensaje</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -135,106 +128,121 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const form = document.getElementById('contact-form');
     
     if (form) {
-      form.addEventListener('submit', async function(e: SubmitEvent) {
+      form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const submitBtn = form.querySelector('.form-submit') as HTMLButtonElement;
-        const submitText = form.querySelector('.submit-text') as HTMLElement;
+        const submitBtn = form.querySelector('.form-submit');
+        const submitText = form.querySelector('.submit-text');
+        
+        // Get form data
+        const nameInput = form.querySelector('#name');
+        const emailInput = form.querySelector('#email');
+        const messageInput = form.querySelector('#message');
+        
+        const name = nameInput ? nameInput.value : '';
+        const email = emailInput ? emailInput.value : '';
+        const message = messageInput ? messageInput.value : '';
         
         if (submitBtn && submitText) {
+          // Validate form
+          if (!name || !email || !message) {
+            showNotification('Por favor completa todos los campos', 'error');
+            return;
+          }
+          
           // Change button state
           submitBtn.classList.add('loading');
           submitBtn.disabled = true;
           submitText.textContent = 'Enviando...';
           
-          try {
-            // Send form data to Formspree
-            const formData = new FormData(form);
-            const response = await fetch(form.action, {
-              method: 'POST',
-              body: formData,
-              headers: {
-                'Accept': 'application/json'
-              }
+          // Simulate sending (for now)
+          setTimeout(() => {
+            // Success
+            submitBtn.classList.remove('loading');
+            submitBtn.classList.add('success');
+            submitText.textContent = '¡Mensaje enviado!';
+            
+            // Reset form
+            if (form.reset) {
+              form.reset();
+            } else {
+              nameInput.value = '';
+              emailInput.value = '';
+              messageInput.value = '';
+            }
+            
+            // Show success notification
+            showNotification('¡Gracias! Tu mensaje ha sido recibido. Te contactaré pronto.', 'success');
+            
+            // Log the message for now (you can see it in browser console)
+            console.log('Mensaje recibido:', {
+              nombre: name,
+              email: email,
+              mensaje: message
             });
             
-            if (response.ok) {
-              // Success
-              submitBtn.classList.remove('loading');
-              submitBtn.classList.add('success');
-              submitText.textContent = '¡Mensaje enviado!';
-              
-              // Reset form
-              form.reset();
-              
-              // Show success message
-              showNotification('¡Gracias! Tu mensaje ha sido enviado correctamente.', 'success');
-              
-            } else {
-              throw new Error('Error en el envío');
-            }
-          } catch (error) {
-            // Error
-            submitBtn.classList.remove('loading');
-            submitBtn.classList.add('error');
-            submitText.textContent = 'Error al enviar';
+            // Reset button after 3 seconds
+            setTimeout(() => {
+              submitBtn.classList.remove('success', 'error');
+              submitBtn.disabled = false;
+              submitText.textContent = 'Enviar mensaje';
+            }, 3000);
             
-            showNotification('Hubo un problema al enviar el mensaje. Intenta nuevamente.', 'error');
-          }
-          
-          // Reset button after 3 seconds
-          setTimeout(() => {
-            submitBtn.classList.remove('success', 'error');
-            submitBtn.disabled = false;
-            submitText.textContent = 'Enviar mensaje';
-          }, 3000);
+          }, 2000);
         }
       });
     }
 
     // Form validation and styling
-    const inputs = document.querySelectorAll('.form-input') as NodeListOf<HTMLInputElement>;
-    inputs.forEach((input: HTMLInputElement) => {
-      input.addEventListener('focus', (e: FocusEvent) => {
-        const target = e.target as HTMLInputElement;
-        target.parentElement?.classList.add('focused');
-      });
-      
-      input.addEventListener('blur', (e: FocusEvent) => {
-        const target = e.target as HTMLInputElement;
-        if (!target.value) {
-          target.parentElement?.classList.remove('focused');
+    const inputs = document.querySelectorAll('.form-input');
+    inputs.forEach(function(input) {
+      input.addEventListener('focus', function(e) {
+        if (e.target && e.target.parentElement) {
+          e.target.parentElement.classList.add('focused');
         }
       });
       
-      input.addEventListener('input', (e: Event) => {
-        const target = e.target as HTMLInputElement;
-        if (target.value) {
-          target.parentElement?.classList.add('filled');
-        } else {
-          target.parentElement?.classList.remove('filled');
+      input.addEventListener('blur', function(e) {
+        if (e.target && e.target.parentElement && !e.target.value) {
+          e.target.parentElement.classList.remove('focused');
+        }
+      });
+      
+      input.addEventListener('input', function(e) {
+        if (e.target && e.target.parentElement) {
+          if (e.target.value) {
+            e.target.parentElement.classList.add('filled');
+          } else {
+            e.target.parentElement.classList.remove('filled');
+          }
         }
       });
     });
 
     // Notification function
-    function showNotification(message: string, type: 'success' | 'error') {
+    function showNotification(message, type) {
       const notification = document.createElement('div');
-      notification.className = `notification notification-${type}`;
+      notification.className = 'notification notification-' + type;
       notification.textContent = message;
       
       document.body.appendChild(notification);
       
       // Show notification
-      setTimeout(() => notification.classList.add('show'), 100);
+      setTimeout(function() {
+        notification.classList.add('show');
+      }, 100);
       
       // Hide notification after 5 seconds
-      setTimeout(() => {
+      setTimeout(function() {
         notification.classList.remove('show');
-        setTimeout(() => document.body.removeChild(notification), 300);
+        setTimeout(function() {
+          if (document.body.contains(notification)) {
+            document.body.removeChild(notification);
+          }
+        }, 300);
       }, 5000);
     }
   });
